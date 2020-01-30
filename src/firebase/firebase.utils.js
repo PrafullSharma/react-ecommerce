@@ -1,8 +1,8 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
-const firebaseConfig = {
+const config = {
   apiKey: "AIzaSyDKDYadD3m3EsXGbhNcwhjWkqkwVYPuz38",
   authDomain: "small-ecomerce-db.firebaseapp.com",
   databaseURL: "https://small-ecomerce-db.firebaseio.com",
@@ -12,13 +12,13 @@ const firebaseConfig = {
   appId: "1:905153141099:web:4e5f9b975d6e0140df142e"
 };
 
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(config);
 
-export const auth = firebase.auth()
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider()
-provider.setCustomParameters({prompt: 'select_account'})
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
-export const signInWithGoogle = () => auth.signInWithPopup(provider)
-
-export default firebase
+export default firebase;
